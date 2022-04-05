@@ -1,5 +1,7 @@
 # Three Mech Demo
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/916e8c7b-47bd-41fa-bf74-469945640079/deploy-status)](https://app.netlify.com/sites/genuine-gingersnap-7f350f/deploys)
+
 ## Getting Started
 
 First, run the development server:
