@@ -9,7 +9,7 @@ title: Expedition Mecha Action
 import React, { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
-export default function Model({ ...props }) {
+export default function MechModel({ ...props }) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/mech.glb");
   const { actions } = useAnimations(animations, group);
