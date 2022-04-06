@@ -7,11 +7,11 @@ const MainScene = dynamic(() => import("../components/MainScene"), {
 });
 
 export default function Home() {
-  const [created, setCreated] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   return (
     <>
-      {!created && (
+      {visible && (
         <Center
           style={{
             height: "100%",
@@ -27,7 +27,10 @@ export default function Home() {
       <MainScene
         onCreated={(state) => {
           console.log("--> Canvas created", state);
-          setCreated(true);
+        }}
+        onReady={(progress) => {
+          setVisible(false);
+          console.log("--> Model ready", progress);
         }}
       />
     </>

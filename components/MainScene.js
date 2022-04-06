@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import { Center } from "@mantine/core";
 import { useControls, Leva } from "leva";
 
-export default function MainScene(props) {
+export default function MainScene({ onCreated, onReady }) {
   const { enabled, intensity } = useControls("Lights", {
     enabled: true,
     intensity: 1,
@@ -19,7 +19,7 @@ export default function MainScene(props) {
   return (
     <Center style={{ height: "100%", width: "100%", zIndex: 2 }}>
       <Leva collapsed />
-      <Canvas camera={{ position: [0, 100, 200] }} onCreated={props.onCreated}>
+      <Canvas camera={{ position: [0, 100, 200] }} onCreated={onCreated}>
         <Suspense fallback={null}>
           {enabled && <ambientLight intensity={intensity} />}
           <OrbitControls
@@ -27,7 +27,7 @@ export default function MainScene(props) {
             autoRotateSpeed={autoRotateSpeed}
             target={new Vector3(0, 50, 0)}
           />
-          <MechModel />
+          <MechModel onReady={onReady} />
         </Suspense>
       </Canvas>
       <Loader />

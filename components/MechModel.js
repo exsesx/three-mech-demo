@@ -7,12 +7,19 @@ title: Expedition Mecha Action
 */
 
 import React, { useEffect, useRef } from "react";
-import { useGLTF, useAnimations } from "@react-three/drei";
+import { useGLTF, useAnimations, useProgress } from "@react-three/drei";
 
-export default function MechModel({ ...props }) {
+export default function MechModel({ onReady, ...props }) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/mech.glb");
   const { actions } = useAnimations(animations, group);
+  const progress = useProgress();
+
+  useEffect(() => {
+    if (progress.progress >= 100 && typeof onReady === "function") {
+      onReady(progress);
+    }
+  }, [onReady, progress]);
 
   useEffect(() => {
     if (!actions) {
