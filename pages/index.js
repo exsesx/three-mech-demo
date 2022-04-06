@@ -16,12 +16,12 @@ export default function Home() {
           style={{
             height: "100%",
             width: "100%",
-            zIndex: 1,
+            zIndex: 9999,
             position: "absolute",
-            top: 0,
+            top: "-40px",
           }}
         >
-          <Loader />
+          <Loader color="red" />
         </Center>
       )}
       <MainScene
@@ -29,7 +29,9 @@ export default function Home() {
           console.log("--> Canvas created", state);
         }}
         onReady={(progress) => {
-          setVisible(false);
+          requestAnimationFrame(() => {
+            setVisible(false);
+          });
           console.log("--> Model ready", progress);
         }}
       />
